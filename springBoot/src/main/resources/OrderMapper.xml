@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkkj.dao.OrderDao">
+
+    <select id="findAll" resultType="com.xkkj.pojo.Order">
+        select * from t_order
+    </select>
+    <select id="findOne" resultType="com.xkkj.pojo.Order">
+        select * from t_order where o_order=#{o_order}
+    </select>
+
+    <insert id="addOrder" parameterType="com.xkkj.pojo.Order"  keyProperty="o_id" useGeneratedKeys="true">
+        insert into t_order
+            (o_id,o_price,o_isPaid,o_user,o_createAt,o_deliver,o_order,o_bookId,o_book)
+        values
+            (null,#{o_price},#{o_isPaid},#{o_user},#{o_createAt},#{o_deliver},#{o_order},#{o_bookId},#{o_book})
+    </insert>
+    <update id="updateOrder"   parameterType="com.xkkj.pojo.Order" >
+        update t_order
+        <set>
+            <if test="o_id!=null">
+                o_id=#{o_id},
+            </if>
+            <if test="o_isPaid!=null">
+                o_isPaid=#{o_isPaid},
+            </if>
+            <if test="o_user!=null">
+                o_user=#{o_user},
+            </if>
+            <if test="o_createAt!=null">
+                o_createAt=#{o_createAt},
+            </if>
+            <if test="o_deliver!=null">
+                o_deliver=#{o_deliver},
+            </if>
+            <if test="o_order!=null">
+                o_order=#{o_order},
+            </if>
+            <if test="o_bookId!=null">
+                o_o_bookId=#{o_bookId},
+            </if>
+            <if test="o_book!=null">
+                o_book=#{o_book},
+            </if>
+        </set>
+        where o_order=#{o_order}
+    </update>
+
+</mapper>

@@ -1,0 +1,37 @@
+spring:
+  redis:
+    database: 0    #redis��Ĭ�����ݿ�Ϊ0
+    host: 127.0.0.1  #����redis��ip
+    port: 6379  #����redis�Ķ˿ں�
+    password:   #����redis������ Ĭ��Ϊ��
+    jedis:
+      pool:
+        max-total: 200    #����redis������Ŀ
+        max-active: 100  #����redis�����
+        max-idle: 8      #������������
+        min-idle: 5     #��С����������
+  datasource:
+    url: jdbc:mysql://localhost:3306/library?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 317212As
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    show-sql: true
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+
+REDIS_KEY : USER_TOKEN
+mybatis:
+  type-aliases-package: com.xkkj.pojo  //设置别名
+  mapper-locations: classpath:*.xml
+
+
+
+

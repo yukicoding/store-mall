@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkkj.dao.AddressDao">
+    <resultMap id="address" type="com.xkkj.pojo.Address">
+        <id column="id" property="id"></id>
+        <result column="address" property="address"/>
+        <result column="name" property="name"></result>
+    </resultMap>
+
+
+    <select id="getAddress" resultMap="address">
+        select * from address
+    </select>
+
+    <delete id="deleteByIds" parameterType="int">
+        delete from address where id = #{id}
+    </delete>
+</mapper>
